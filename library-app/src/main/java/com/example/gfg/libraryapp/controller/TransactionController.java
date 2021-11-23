@@ -15,12 +15,12 @@ public class TransactionController {
     TransactionService transactionService;
 
 
-    @PostMapping("/issue")
+    @PostMapping("/transaction/issue")
     public String issueBook(@RequestBody BookIssueRequest bookIssueRequest) throws Exception {
        return transactionService.issueBook(bookIssueRequest);
     }
 
-    @PostMapping("/return")
+    @PostMapping("/transaction/return")
     public String returnBook(@RequestBody BookReturnRequest bookReturnRequest) throws Exception {
         return transactionService.returnBook(bookReturnRequest);
     }

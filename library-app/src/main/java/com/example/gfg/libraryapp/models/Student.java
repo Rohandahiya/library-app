@@ -1,9 +1,12 @@
 package com.example.gfg.libraryapp.models;
 
+import com.example.gfg.libraryapp.security.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Student {
+public class Student implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,4 +35,9 @@ public class Student {
 
     @CreationTimestamp
     private Date createdDate;
+
+    @OneToOne
+    @JoinColumn
+    @JsonIgnoreProperties("student")
+    private User user;
 }
